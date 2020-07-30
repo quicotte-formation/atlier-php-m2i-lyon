@@ -47,7 +47,24 @@ while(true){
     echo "\n";
 
     // Lecture choix util
-    readline();
+    echo "Choisissez une carte : ";
+    $indiceCarteChoisie1 = readline() - 1;
+    echo "Choisissez une autre carte : ";
+    $indiceCarteChoisie2 = readline() - 1;
+
+    // Affiche cartes avec cartes choisies visibles
+    for($i=0;$i<count($paires);$i++){
+        if( $i==$indiceCarteChoisie1 ){
+            echo $paires[$i];
+        }elseif( $i==$indiceCarteChoisie2 ){
+            echo $paires[$i];
+        }else{
+            echo $i + 1;
+        }
+
+        echo " ";
+    }
+    echo "\n";
 }
 
 var_dump( $paires );
