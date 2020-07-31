@@ -33,13 +33,13 @@
  */
 
 // Construit mon tableau paires
-$pairesStr = "A,A,B,B,C,C,D,D,E,E,F,F";
+$pairesStr = "A,A,B,B,C,C";
 $paires = explode(",", $pairesStr);
 
 // Mélange mon tableau
 shuffle($paires);
 
-while(true){
+while( count($paires)>0 ){
     // Affiche cartes coté verso
     for($i=1;$i<=count($paires);$i++){
         echo $i . " ";
@@ -65,6 +65,14 @@ while(true){
         echo " ";
     }
     echo "\n";
+    echo "[ Pressez une touche ]";
+    readline();
+
+    // Elimine cartes si ce sont des paires ( on dit que carte1 < carte2 )
+    if( $paires[$indiceCarteChoisie1] == $paires[$indiceCarteChoisie2] ){
+        array_splice($paires, $indiceCarteChoisie2, 1);
+        array_splice($paires, $indiceCarteChoisie1, 1);
+    }
 }
 
-var_dump( $paires );
+echo "Partie terminée, vous avez gagné !";
