@@ -1,7 +1,7 @@
 <?php
 
 $pdo = new PDO("sqlite:allocinetv.db");
-$stm = $pdo->query("SELECT * FROM serie LIMIT 50");
+$stm = $pdo->query("SELECT * FROM genre");
 $series = $stm->fetchAll();
 
 echo json_encode($series);

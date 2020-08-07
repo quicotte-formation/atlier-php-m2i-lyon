@@ -9,12 +9,10 @@
 <script>
     let promiseFetch = fetch('ex17-pdo.php');
     promiseFetch.then( rep=>{
-        console.log( rep );
         let promiseJson = rep.json();
 
-        promiseJson.then( series => {
-            console.log(series[3].titre);
-
+        promiseJson.then( genres => {
+            console.log( genres );
         } );
     } );
 </script>
