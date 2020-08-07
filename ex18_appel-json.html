@@ -7,12 +7,15 @@
 <body>
 
 <script>
+
+    let genres = [];
+
     let promiseFetch = fetch('ex17-pdo.php');
     promiseFetch.then( rep=>{
         let promiseJson = rep.json();
 
-        promiseJson.then( genres => {
-            console.log( genres );
+        promiseJson.then( tabGenres => {
+            console.log( tabGenres );
         } );
     } );
 </script>
