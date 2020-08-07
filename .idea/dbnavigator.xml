@@ -24,30 +24,27 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="ca3a788d-278d-492e-a236-dafaeee94c89">
+      <connection connection-id="db4d6123-0208-484d-80d2-28bae88b3084">
         <schema name="main" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="ca3a788d-278d-492e-a236-dafaeee94c89">
+    <connection id="db4d6123-0208-484d-80d2-28bae88b3084">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
-      <console name="Connection 1" type="STANDARD" schema="main" session="Main">insert into film(titre, annee_prod) values ('Dracula', 1901);
-insert into film(titre, annee_prod) values ('Frankenstein', 1920);</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="ca3a788d-278d-492e-a236-dafaeee94c89" />
+    <connection id="db4d6123-0208-484d-80d2-28bae88b3084" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="ca3a788d-278d-492e-a236-dafaeee94c89" dataset="main.film" active-filter-id="">
-      <filter id="9ed239d8-9ec2-4698-8be0-d9e819d64392" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="id" operator="=" value="" active="true" />
-      </filter>
-    </filter-actions>
+    <filter-actions connection-id="db4d6123-0208-484d-80d2-28bae88b3084" dataset="main.acteur" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="db4d6123-0208-484d-80d2-28bae88b3084" dataset="main.realisateur" active-filter-id="" />
+    <filter-actions connection-id="db4d6123-0208-484d-80d2-28bae88b3084" dataset="main.serie" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="db4d6123-0208-484d-80d2-28bae88b3084" dataset="main.keyword" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -72,7 +69,7 @@ insert into film(titre, annee_prod) values ('Frankenstein', 1920);</console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="ca3a788d-278d-492e-a236-dafaeee94c89" active="true">
+      <connection id="db4d6123-0208-484d-80d2-28bae88b3084" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -87,14 +84,14 @@ insert into film(titre, annee_prod) values ('Frankenstein', 1920);</console>
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="C:\Users\quico\PhpstormProjects\AtelierPHPM2iLyon\sqlite.db" schema="main" />
+            <file path="C:\Users\quico\PhpstormProjects\AtelierPHPM2iLyon\allocinetv.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
           <deprecated-pwd value="" />
         </database>
         <properties>
-          <auto-commit value="true" />
+          <auto-commit value="false" />
         </properties>
         <ssh-settings>
           <active value="false" />
