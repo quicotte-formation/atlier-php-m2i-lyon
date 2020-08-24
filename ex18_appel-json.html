@@ -5,19 +5,71 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="genres"></div>
+Tu veux ajouter un genre ?
+<input id="nouveauGenre">
+<input type="button" onclick="clicAjout();" value="Va-y ajoute ; )">
 <script>
 
     let genres = [];
 
+    let refraichirAfficageGenres = () => {
+        // Vide div
+        document.querySelector('#genres').innerHTML = '';
+
+        // Trie genres
+        genres = genres.sort((genreA, genreB) => {
+            if (genreA.nom < genreB.nom) {
+                return -1;
+            } else if (genreA.nom > genreB.nom) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        // Génère ds mon div un span / genre
+        genres.forEach(genre => {
+
+            let span = document.createElement('span');
+            span.style.backgroundColor = 'lightblue';
+            span.style.border = '1px solid grey';
+            span.style.margin = '3px';
+            span.innerHTML = genre.nom;
+            document.querySelector('#genres').appendChild(span);
+        });
+    };
+
+    let clicAjout = () => {
+
+        // Récup nom genre entré par util
+        let nomGenre = document.querySelector('#nouveauGenre').value;
+
+        // Ajoute à var glob genre
+        let genre = {nom: nomGenre};
+        genres.push(genre);
+
+        // Raffraichit affichage
+        refraichirAfficageGenres();
+    };
+
+    // Envoyer req ajax
     let promiseFetch = fetch('ex17-pdo.php');
-    promiseFetch.then( rep=>{
+    promiseFetch.then(rep => {
+
         let promiseJson = rep.json();
 
-        promiseJson.then( tabGenres => {
-            console.log( tabGenres );
-        } );
-    } );
+        promiseJson.then(tabGenres => {
+            console.log(tabGenres);
+
+            // Init var glob genres
+            genres = tabGenres;
+
+            // Rafraichit affichage
+            refraichirAfficageGenres();
+        });
+    });
+    // Script principal
 </script>
 </body>
 </html>

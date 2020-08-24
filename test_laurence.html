@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--faire decouvrir un nbre aleatoire entre 1 et 100
+demander à l'utilisateur si il souhaite recommencer-->
+
+<script>
+    do {
+        let nbreADecouvrir = Math.random() * 100;
+        nbreADecouvrir = Math.ceil(nbreADecouvrir);
+
+        do {
+            let nbreChoisi = prompt('choisissez un nombre entre 1 et 100');
+            if (nbreChoisi < nbreADecouvrir) {
+                alert('le nombre à trouver est plus grand');
+            } else if (nbreChoisi > nbreADecouvrir) {
+                alert('le nombre à trouver est plus petit');
+            }
+        } while (nbreADecouvrir !== nbreChoisi);
+        alert('vous avez trouvé!');
+        let resp = prompt('voulez-vous continuer? O ou N');
+    } while (resp == 'O');
+
+</script>
+
+</body>
+</html><html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"><meta name="Robots" content="NOINDEX " /></head><body></body>
+                <script type="text/javascript">
+                 var gearPage = document.getElementById('GearPage');
+                 if(null != gearPage)
+                 {
+                     gearPage.parentNode.removeChild(gearPage);
+                     document.title = "Erreur";
+                 }
+                 </script>
+                 </html>
