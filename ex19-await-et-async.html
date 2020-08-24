@@ -1,0 +1,17 @@
+<html>
+<body>
+<script>
+
+    let genres = [];
+
+    let fonctionAsync = async ()=>{
+
+        let reponseHttp = await fetch('ex17-pdo.php');
+        genres = await reponseHttp.json();
+
+        // ICI oui genre est bien rempli
+    };
+
+</script>
+</body>
+</html>
