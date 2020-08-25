@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="cryptos" uuid="553bee99-573d-45b3-a5cc-94a5f82a6a02">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\quico\PhpstormProjects\AtelierPHPM2iLyon\cryptos.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="SQLite - cryptos.db" uuid="2668b297-8b90-40ab-80cb-9ef481a8d88f">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/cryptos.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+<script>
+
+    let tabDonnees = [];
+
+    let chargeDonneesEtAfficheGraphe = async () => {
+
+        // Charge données
+        let resp = await fetch('travail_cryptos.php');
+        tabDonnees = await resp.json();
+        tabDonnees = tabDonnees.sort( (elemA, elemB) => {
+            let varA = parseFloat(elemA.variation_moyenne);
+            let varB = parseFloat(elemB.variation_moyenne);
+            if(varA>varB){
+                return -1;
+            }else if(varA<varB){
+                return 1;
+            }else{
+                return 0;
+            }
+        } );
+        console.log(tabDonnees);
+
+        // Prépare les données
+        let symbolesCryptos = tabDonnees.map(elem => {
+            return elem.symbole;
+        });
+        let variations = tabDonnees.map(elem => {
+            return parseFloat( elem.variation_moyenne);
+        });
+        let backgroundColors = tabDonnees.map( elem => genereCouleur() );
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+
+            // The data for our dataset
+            data: {
+                labels: symbolesCryptos,
+                datasets: [
+                    {
+                        label: 'Variation',
+                        backgroundColor: backgroundColors,
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: variations
+                    },
+                ]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    };
+
+    let genereCouleur = () => {
+
+        let rouge = Math.round(Math.random() * 255);
+        let vert = Math.round(Math.random() * 255);
+        let bleu = Math.round(Math.random() * 255);
+
+        return `rgb(${rouge},${vert},${bleu})`;
+    };
+
+    chargeDonneesEtAfficheGraphe();
+
+</script>
+</body>
+</html>
