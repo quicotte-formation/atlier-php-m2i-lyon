@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+<canvas id="myChart" height="75%"></canvas>
+<div id="zoneBoutons"></div>
+<script>
+    let chargeCoursCryptoEtAfficheGraphe = async (symbole) => {
+
+        // Fetche cours en passant symbole
+        let repHTTP = await fetch('travail_cryptos_2.php?symbole=' + symbole);
+
+        // Conversion reponse JSON vers objet js
+        let donnees = await repHTTP.json();
+
+        // Genere titres ( dates )
+        let titres = donnees.map(donnee => donnee.date_jour);
+
+        // Genere valeurs (cours)
+        let valeurs = donnees.map(donnee => donnee.valeur);
+        console.log(valeurs);
+
+        // Creation graphe
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: titres,
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: valeurs
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    };
+
+    let chargeCryptosEtAfficheBoutons = async () => {
+
+        // Fetch récup cryptos
+        let repHttp = await fetch('travail_cryptos.php');
+
+        // Conversion en JSON
+        let cryptos = await repHttp.json();
+
+        // Trie cryptos symbole alpha
+        cryptos = cryptos.sort((elemA, elemB) => {
+            if (elemA.symbole > elemB.symbole) {
+                return 1;
+            } else if (elemA.symbole < elemB.symbole) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
+        // Genere un bouton pour chaque crypto
+        cryptos.forEach(crypto => {
+
+            let bouton = document.createElement('button');
+            let valeurAttribut = "chargeCoursCryptoEtAfficheGraphe('" + crypto.symbole + "')";
+            bouton.setAttribute('onclick', valeurAttribut);
+            bouton.innerHTML = crypto.symbole;
+            document.querySelector('#zoneBoutons').appendChild(bouton);
+        });
+    };
+
+    // Bon script démarre ici
+    chargeCryptosEtAfficheBoutons();
+</script>
+</body>
+</html>
